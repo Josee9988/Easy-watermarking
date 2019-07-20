@@ -4,9 +4,11 @@
 
 .jfx-list-cell {
 	-fx-background-insets: 0.0;
+	-fx-alignment: center-left;
 }
 
 .jfx-list-cell .jfx-rippler{
+	-fx-alignment:center;
 	-fx-rippler-fill:BLUE;
 }
 
@@ -19,4 +21,13 @@
 	-fx-cell-vertial-margin: 10.0;
 	-fx-vertical-gap: 10;
 	-fx-vertical-gap: 10;
+}
+
+
+/* Le da un borde a los botones */
+.button{
+	-fx-background-radius: 6.0px;
+	-fx-border-radius: 6.0px;
+	-fx-border-width: 0.175px;
+	-fx-border-color: black;
 }
