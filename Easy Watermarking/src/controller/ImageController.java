@@ -1,6 +1,5 @@
 package controller;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
@@ -10,10 +9,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 public class ImageController {
-	// BufferedImage img1;
-	// BufferedImage img2;
-	// BufferedImage img2Resized;
-	// BufferedImage joinedImg;
 
 	public ImageController(){
 
@@ -28,11 +23,9 @@ public class ImageController {
 
 		BufferedImage img2Resized = ImageController.resize(img2, img1.getWidth(), img1.getHeight());
 		BufferedImage joinedImg = ImageController.joinBufferedImage(img1, img2Resized);
-		String end = dir.getAbsolutePath() + "/" + this.getFileName(originalImagePath) + "."
-				+ "png";
-		System.out.println("End" + end);
 
-		ImageIO.write(joinedImg, "png", new File(end));
+		ImageIO.write(joinedImg, "png",
+				new File((dir.getAbsolutePath() + "/" + this.getFileName(originalImagePath) + "." + "png").toString()));
 		img1.flush();
 		img2.flush();
 		img2Resized.flush();
@@ -51,17 +44,15 @@ public class ImageController {
 	}
 
 	private static BufferedImage joinBufferedImage(BufferedImage img1, BufferedImage img2) {
-		BufferedImage newImage = new BufferedImage(img1.getWidth(), img1.getWidth(), BufferedImage.TYPE_INT_ARGB);
+		BufferedImage newImage = new BufferedImage(img1.getWidth(), img1.getHeight(), BufferedImage.TYPE_INT_ARGB);
 		Graphics2D g2 = newImage.createGraphics();
-		Color oldColor = g2.getColor();
-		g2.setPaint(Color.BLACK);
-		g2.fillRect(0, 0, 0, 0);
-		g2.setColor(oldColor);
 		g2.drawImage(img1, null, 0, 0);
 		g2.drawImage(img2, null, 0, 0);
 		g2.dispose();
 		return newImage;
 	}
+
+
 
 	public String removeFile(String path) {
 		int pos2 = path.lastIndexOf("/");
@@ -76,9 +67,5 @@ public class ImageController {
 		return path.substring(pos2 + 1, pos);
 	}
 
-	private String getExtension(String path) {
-		int pos = path.lastIndexOf(".");
-		return path.substring(pos + 1, path.length());
-	}
 
 }

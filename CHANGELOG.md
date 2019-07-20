@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.2.1] - 2019-07-20
+
+### Fixed
+
+- Bug that made the watermark don't fill the original picture by it's width and height and was filling by its width x width.
+
 ## [0.2.0] - 2019-07-20
 
 ### Added
