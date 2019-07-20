@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="jfoenix-9.0.9.jar"/>
+	<classpathentry kind="lib" path="javafx-swt.jar"/>
+	<classpathentry kind="lib" path="javafx.base.jar"/>
+	<classpathentry kind="lib" path="javafx.controls.jar"/>
+	<classpathentry kind="lib" path="javafx.fxml.jar"/>
+	<classpathentry kind="lib" path="javafx.graphics.jar"/>
+	<classpathentry kind="lib" path="javafx.media.jar"/>
+	<classpathentry kind="lib" path="javafx.swing.jar"/>
+	<classpathentry kind="lib" path="javafx.web.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

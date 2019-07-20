@@ -1,0 +1,36 @@
+package main;
+
+import java.io.IOException;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+	public static void main(String[] args) {
+		Application.launch(args);
+	}
+
+	@Override
+	public void start(Stage primaryStage) throws Exception {
+		Parent root;
+		try {
+			root = FXMLLoader.load(this.getClass().getResource("/view/import.fxml"));
+			primaryStage.setScene(new Scene(root));
+			primaryStage.setResizable(true);
+			// Image icon = new
+			// Image(this.getClass().getResourceAsStream("/view/jc-favicon.png"));
+			// primaryStage.getIcons().add(icon);
+			primaryStage.setTitle("Easy Watermark - Import your pictures + the watermark");
+			primaryStage.show();
+
+		} catch (IOException e) {
+			System.out.println(e.toString());
+		}
+
+	}
+
+}
