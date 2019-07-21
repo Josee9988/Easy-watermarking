@@ -1,6 +1,14 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.3.2] - 2019-07-21
+
+### Added
+
+- Basic info to readme
+- Missing documentation
+- Icon of the project.
+
 ## [0.3.1] - 2019-07-21
 
 ### Added

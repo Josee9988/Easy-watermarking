@@ -11,9 +11,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
+ * EasyWatermark main class that initialices import.fxml
+ *
  * @author Jose Gracia berenguer
  */
 public class EasyWatermark extends Application {
@@ -26,15 +29,11 @@ public class EasyWatermark extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Parent root;
 		try {
-			// ClassLoader.getSystemResource("com/xyz/resources/camera.png");
-			// ImageIcon iChing = new
-			// ImageIcon("C:\\Users\\RrezartP\\Documents\\NetBeansProjects\\Inventari\\src\\Gui\\icon\\report-go-icon.png");
 			root = FXMLLoader.load(this.getClass().getResource("/view/import.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setResizable(true);
-			// Image icon = new
-			// Image(this.getClass().getResourceAsStream("/view/jc-favicon.png"));
-			// primaryStage.getIcons().add(icon);
+			Image icon = new Image(this.getClass().getResourceAsStream("/view/icons/MainIcon.png"));
+			primaryStage.getIcons().add(icon);
 			primaryStage.setTitle("Easy Watermark - Import your pictures + the watermark");
 			primaryStage.show();
 

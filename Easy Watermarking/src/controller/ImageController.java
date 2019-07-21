@@ -16,6 +16,12 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+/**
+ * ImageController class that resizes and joins the two images.
+ * 
+ * @author Jose Gracia
+ *
+ */
 public class ImageController {
 	private static ArrayList<String> paths = new ArrayList<String>();
 
@@ -91,7 +97,7 @@ public class ImageController {
 	/**
 	 * resize resice the watermark to get the width and height of the original image
 	 * to perform the watermark
-	 * 
+	 *
 	 * @param img    the image of the watermark
 	 * @param width  the width of the image to perform the watermark
 	 * @param height the height of the image to perform the watermark
@@ -108,7 +114,7 @@ public class ImageController {
 
 	/**
 	 * joinBufferedImage joins the two images, the img2 above the img1
-	 * 
+	 *
 	 * @param img1 Image to perform the watermark
 	 * @param img2 Image with the watermark
 	 * @return BufferedImage with the new image joined
