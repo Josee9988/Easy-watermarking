@@ -174,7 +174,7 @@ public class ImportController implements Initializable {
 	 * watermarkAllAction when you press the middle button to perform the task.
 	 * calls ImageController to perform the action and when it ends shows an alert
 	 * with the paths of the folders with the images watermaked
-	 * 
+	 *
 	 * @throws IOException if there has been an error while doing the image parse.
 	 */
 	public void watermarkAllAction() throws IOException {
@@ -183,7 +183,7 @@ public class ImportController implements Initializable {
 		} else if (this.viewWater.getItems().size() == 0) {
 			this.errorLabel.setText("You must import your watermark");
 		} else {
-			ImageController imageController = null;
+			ImageController imageController = new ImageController(ImportController.OS);
 			for (int i = 0; i < this.vieww.getItems().size(); i++) {
 				imageController = new ImageController(this.vieww.getItems().get(i).getText(),
 						this.viewWater.getItems().get(0).getText());
@@ -249,7 +249,7 @@ public class ImportController implements Initializable {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime().exec(new String[] { "xdg-open",
-						"https://github.com/Josee9988/Easy-watermarking/blob/master/README.md" });
+				"https://github.com/Josee9988/Easy-watermarking/blob/master/README.md" });
 			}
 		} else {
 			if (Desktop.isDesktopSupported()) {
@@ -271,7 +271,7 @@ public class ImportController implements Initializable {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime().exec(new String[] { "xdg-open",
-						"https://github.com/Josee9988/Easy-watermarking/blob/master/LICENSE" });
+				"https://github.com/Josee9988/Easy-watermarking/blob/master/LICENSE" });
 			}
 		} else {
 			if (Desktop.isDesktopSupported()) {
@@ -313,7 +313,7 @@ public class ImportController implements Initializable {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime()
-						.exec(new String[] { "xdg-open", "https://github.com/Josee9988/Easy-watermarking" });
+				.exec(new String[] { "xdg-open", "https://github.com/Josee9988/Easy-watermarking" });
 			}
 		} else {
 			if (Desktop.isDesktopSupported()) {

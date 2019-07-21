@@ -18,15 +18,26 @@ import javax.imageio.ImageIO;
 
 /**
  * ImageController class that resizes and joins the two images.
- * 
+ *
  * @author Jose Gracia
  *
  */
 public class ImageController {
 	private static ArrayList<String> paths = new ArrayList<String>();
+	private static String OS;
 
 	// Default constructor
 	public ImageController() {
+	}
+
+	/**
+	 * ImageController receives an String with the operating system and sets it to
+	 * the global variable OS
+	 *
+	 * @param OS the name of the operating system
+	 */
+	public ImageController(String OS) {
+		ImageController.OS = OS;
 	}
 
 	/**
@@ -54,6 +65,7 @@ public class ImageController {
 		} else {
 			path2File = dir.getAbsolutePath() + "/" + this.getFileName(originalImagePath) + "." + "png".toString();
 		}
+		System.out.println(path2File);
 		ImageController.paths.add(path2File);
 		ImageIO.write(joinedImg, "png", new File((path2File)));
 		img1.flush();
@@ -61,6 +73,7 @@ public class ImageController {
 		img2Resized.flush();
 		joinedImg.flush();
 	}
+
 
 	/**
 	 * CheckDifferentFolder checks the different save paths that and return them
@@ -135,7 +148,13 @@ public class ImageController {
 	 * @return String with the path without the file
 	 */
 	private String removeFile(String path) {
-		int pos2 = path.lastIndexOf("/");
+		int pos2 = 0;
+		if (ImageController.OS.indexOf("nix") >= 0 || ImageController.OS.indexOf("nux") >= 0
+				|| ImageController.OS.indexOf("aix") > 0) {
+			pos2 = path.lastIndexOf("/");
+		} else {
+			pos2 = path.lastIndexOf("\\");
+		}
 		return path.substring(0, pos2 + 1);
 
 	}
@@ -147,9 +166,17 @@ public class ImageController {
 	 * @return String with the filename
 	 */
 	private String getFileName(String path) {
-		int pos = path.lastIndexOf(".");
-		int pos2 = path.lastIndexOf("/");
+		int pos = 0, pos2 = 0;
+		if (ImageController.OS.indexOf("nix") >= 0 || ImageController.OS.indexOf("nux") >= 0
+				|| ImageController.OS.indexOf("aix") > 0) {
+			pos2 = path.lastIndexOf("/");
+		} else {
+			pos2 = path.lastIndexOf("\\");
+		}
+		pos = path.lastIndexOf(".");
+
 		return path.substring(pos2 + 1, pos);
+
 	}
 
 }

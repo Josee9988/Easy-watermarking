@@ -1,6 +1,14 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.4.0] - 2019-07-21
+
+### Added
+
+- Support for Windows.
+- Images of support windows & linux added + compressed
+- Folder of screenshots with all the images the readme will display.
+
 ## [0.3.2] - 2019-07-21
 
 ### Added
