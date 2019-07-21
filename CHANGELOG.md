@@ -1,6 +1,25 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.3.0] - 2019-07-21
+
+### Added
+
+- Improved responsiveness
+- Menubar items.
+- Menubar items link to internet pages (github)
+- Added an alert dialog (informational) that displays the folder that have been created which contains the watermarked images.
+- A remove button that lets you remove images from the left panel.
+- License
+
+### Fixed
+
+- Some bugs
+
+### Changed
+
+- Name of apply watermark
+
 ## [0.2.1] - 2019-07-20
 
 ### Fixed

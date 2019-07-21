@@ -30,4 +30,5 @@
 	-fx-border-radius: 6.0px;
 	-fx-border-width: 0.175px;
 	-fx-border-color: black;
+	-fx-max-height: 50px;
 }

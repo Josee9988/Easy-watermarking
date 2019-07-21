@@ -11,48 +11,23 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="600.0" prefWidth="900.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImportController">
+<VBox prefHeight="600.0" prefWidth="981.0" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ImportController">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
-        <Menu mnemonicParsing="false" text="File">
-          <items>
-            <MenuItem mnemonicParsing="false" text="New" />
-            <MenuItem mnemonicParsing="false" text="Open…" />
-            <Menu mnemonicParsing="false" text="Open Recent" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Close" />
-            <MenuItem mnemonicParsing="false" text="Save" />
-            <MenuItem mnemonicParsing="false" text="Save As…" />
-            <MenuItem mnemonicParsing="false" text="Revert" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Preferences…" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Quit" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
         <Menu mnemonicParsing="false" text="Help">
           <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                  <MenuItem mnemonicParsing="false" onAction="#sourceCode" text="See Source Code" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" onAction="#about" text="About Easy Watermarking" />
+                  <MenuItem mnemonicParsing="false" onAction="#josee9988" text="More about Josee9988" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" onAction="#license" text="License" />
+            <MenuItem mnemonicParsing="false" onAction="#quit" text="Quit" />
           </items>
         </Menu>
       </menus>
@@ -69,30 +44,41 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
-                  <JFXButton fx:id="importPics" buttonType="RAISED" layoutX="183.0" layoutY="485.0" onAction="#importPicsAction" ripplerFill="RED" text="Import" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="485.0">
+                  <JFXButton fx:id="importPics" buttonType="RAISED" layoutX="183.0" layoutY="485.0" maxHeight="50.0" onAction="#importPicsAction" prefHeight="50.0" prefWidth="311.0" ripplerFill="RED" text="Import" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="109.0">
                      <font>
                         <Font name="Ubuntu Bold" size="17.0" />
                      </font>
+                     <padding>
+                        <Insets right="1.0" />
+                     </padding>
                   </JFXButton>
-                  <JFXListView fx:id="vieww" layoutX="11.0" layoutY="59.0" minWidth="200.0" prefHeight="417.0" prefWidth="424.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <JFXListView fx:id="vieww" layoutX="11.0" layoutY="59.0" minWidth="200.0" prefHeight="417.0" prefWidth="424.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
+                  <JFXButton fx:id="remove" buttonType="RAISED" layoutX="350.0" layoutY="488.0" maxHeight="50.0" onAction="#removeItem" prefHeight="50.0" prefWidth="81.0" ripplerFill="RED" text="Remove" textAlignment="CENTER" textFill="#d33c3c" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="14.0">
+                     <padding>
+                        <Insets left="2.0" />
+                     </padding>
+                     <font>
+                        <Font name="Ubuntu Bold" size="15.0" />
+                     </font>
+                  </JFXButton>
           </children>
         </AnchorPane>
         <AnchorPane>
           <children>
             <Label alignment="CENTER" font="$x1" layoutX="123.0" layoutY="14.0" style="&#10;" text="Import the watermark" textAlignment="CENTER" textFill="$x2" wrapText="false" AnchorPane.leftAnchor="67.0" AnchorPane.rightAnchor="67.0" />
-                  <JFXButton fx:id="importWater" buttonType="RAISED" layoutX="183.0" layoutY="485.0" onAction="#importWaterAction" ripplerFill="RED" text="Import" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="485.0">
+                  <JFXButton fx:id="importWater" buttonType="RAISED" layoutX="183.0" layoutY="485.0" maxHeight="50.0" onAction="#importWaterAction" prefHeight="50.0" ripplerFill="RED" text="Import" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0">
                      <font>
                         <Font name="Ubuntu Bold" size="17.0" />
                      </font>
                   </JFXButton>
-                  <JFXListView fx:id="viewWater" layoutX="11.0" layoutY="66.0" minWidth="200.0" prefHeight="417.0" prefWidth="424.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <JFXListView fx:id="viewWater" layoutX="11.0" layoutY="66.0" minWidth="200.0" prefHeight="417.0" prefWidth="424.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0" />
           </children>
         </AnchorPane>
       </items>
     </SplitPane>
     <HBox id="HBox" alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="900.0" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-        <Label fx:id="todayDate" maxHeight="1.7976931348623157E308" maxWidth="-1.0" prefHeight="39.0" prefWidth="570.0" HBox.hgrow="ALWAYS">
+        <Label fx:id="todayDate" maxHeight="1.7976931348623157E308" maxWidth="-1.0" prefHeight="22.0" prefWidth="250.0" HBox.hgrow="ALWAYS">
           <font>
             <Font size="11.0" fx:id="x3" />
           </font>
@@ -100,30 +86,34 @@
             <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
           </textFill>
                <HBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="20.0" top="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+        </Label>
+            <JFXButton fx:id="watermarkAll" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#watermarkAllAction" prefHeight="42.0" prefWidth="400.0" ripplerFill="RED" text="Apply Watermark" textAlignment="CENTER" textFill="#4bb245">
+               <font>
+                  <Font name="Ubuntu Bold" size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </HBox.margin>
-        </Label>
-        <Pane prefHeight="37.0" prefWidth="532.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <JFXButton fx:id="watermarkAll" buttonType="RAISED" layoutX="-43.0" layoutY="-2.0" onAction="#watermarkAllAction" prefHeight="42.0" prefWidth="341.0" ripplerFill="RED" text="Select output folder and Watermark all" textAlignment="CENTER" textFill="#4bb245">
-                     <font>
-                        <Font name="Ubuntu Bold" size="17.0" />
-                     </font>
-                     <padding>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </padding>
-                  </JFXButton>
-               </children>
-               <HBox.margin>
-                  <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
-               </HBox.margin></Pane>
-        <Label fx:id="errorLabel" maxWidth="-1.0" prefHeight="14.0" prefWidth="570.0" textAlignment="JUSTIFY" textFill="#eb0707" HBox.hgrow="NEVER">
+            </JFXButton>
+        <Label fx:id="errorLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" maxWidth="-1.0" prefHeight="36.0" prefWidth="236.0" text="" textFill="#eb0707" HBox.hgrow="ALWAYS">
                <font>
                   <Font name="Ubuntu Bold Italic" size="14.0" />
                </font>
                <HBox.margin>
+                  <Insets bottom="10.0" left="30.0" right="10.0" top="10.0" />
+               </HBox.margin>
+               <padding>
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </HBox.margin></Label>
+               </padding>
+            </Label>
       </children>
       <padding>
         <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />

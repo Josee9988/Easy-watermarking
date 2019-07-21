@@ -18,6 +18,10 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		Parent root;
 		try {
+			// ClassLoader.getSystemResource("com/xyz/resources/camera.png");
+			// ImageIcon iChing = new
+			// ImageIcon("C:\\Users\\RrezartP\\Documents\\NetBeansProjects\\Inventari\\src\\Gui\\icon\\report-go-icon.png");
+
 			root = FXMLLoader.load(this.getClass().getResource("/view/import.fxml"));
 			primaryStage.setScene(new Scene(root));
 			primaryStage.setResizable(true);
