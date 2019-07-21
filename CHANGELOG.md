@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.3.1] - 2019-07-21
+
+### Added
+
+- Documentation of the source java code
+
 ## [0.3.0] - 2019-07-21
 
 ### Added
