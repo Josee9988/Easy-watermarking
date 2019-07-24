@@ -97,7 +97,7 @@ public class ImageController implements Runnable {
 	 * @throws IOException if there has been an exception while performing the task
 	 *                     of the image
 	 */
-	public void imageParse() throws IOException {
+	private void imageParse() throws IOException {
 		File dir = new File(
 				this.removeFile(ImageController.originalImagePath.get(this.turn).getText()) + "Watermarked");
 		dir.mkdir();
@@ -112,14 +112,14 @@ public class ImageController implements Runnable {
 		if (System.getProperty("os.name").toLowerCase().indexOf("win") > 0) {
 			path2File = dir.getAbsolutePath() + "\\"
 					+ this.getFileName(ImageController.originalImagePath.get(this.turn).getText()) + "."
-					+ "png".toString();
+					+ "gif".toString();
 		} else {
 			path2File = dir.getAbsolutePath() + "/"
 					+ this.getFileName(ImageController.originalImagePath.get(this.turn).getText()) + "."
-					+ "png".toString();
+					+ "gif".toString();
 		}
 		ImageController.paths.add(path2File.toString());
-		ImageIO.write(this.joinedImg, "png", new File((path2File)));
+		ImageIO.write(this.joinedImg, "gif", new File((path2File)));
 		this.img1.flush();
 		this.img2.flush();
 		this.img2Resized.flush();

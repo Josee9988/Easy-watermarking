@@ -1,6 +1,18 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.5.2] - 2019-07-24
+
+### Added
+
+- Fixed bug at pressing remove with nothing selected.
+- Support from gif (without animation)
+- Readme all the image file type supported
+
+### Changed
+
+- From public to private unnecesary methods
+
 ## [0.5.1] - 2019-07-24
 
 ### Added

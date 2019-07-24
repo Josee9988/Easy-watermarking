@@ -82,7 +82,7 @@ public class ImportController implements Initializable {
 	 *
 	 * @throws FileNotFoundException if the images are not found in your file system
 	 */
-	public void importPicsAction() throws FileNotFoundException {
+	private void importPicsAction() throws FileNotFoundException {
 		this.ChooseFile("Choose your images to watermark them: ", false);
 	}
 
@@ -93,7 +93,7 @@ public class ImportController implements Initializable {
 	 *
 	 * @throws FileNotFoundException if the images are not found in your file system
 	 */
-	public void importWaterAction() throws FileNotFoundException {
+	private void importWaterAction() throws FileNotFoundException {
 		this.ChooseFile("Choose your watermarker: ", true);
 
 	}
@@ -147,12 +147,12 @@ public class ImportController implements Initializable {
 		jfc.setFileSelectionMode(JFileChooser.FILES_ONLY);
 		FileNameExtensionFilter filter;
 		if (OnlyPng) {
-			filter = new FileNameExtensionFilter("PNG files", "png");
+			filter = new FileNameExtensionFilter("PNG watermark with transparency", "png");
 			jfc.setMultiSelectionEnabled(false);
 		} else {
 			jfc.setMultiSelectionEnabled(true);
-			filter = new FileNameExtensionFilter("PNG, tiff, bmp, jpeg or jpg Files", "png", "jpg", "jpeg", "bmp",
-					"tiff");
+			filter = new FileNameExtensionFilter("PNG, tiff, bmp, gif, jpeg or jpg Files", "png", "jpg", "jpeg", "bmp",
+					"tiff", "gif");
 
 		}
 		jfc.setFileFilter(filter);
@@ -178,7 +178,7 @@ public class ImportController implements Initializable {
 	 *
 	 * @throws IOException if there has been an error while doing the image parse.
 	 */
-	public void watermarkAllAction() throws IOException {
+	private void watermarkAllAction() throws IOException {
 		if (this.vieww.getItems().size() == 0) {
 			this.errorLabel.setText("You must import your images.");
 		} else if (this.viewWater.getItems().size() == 0) {
@@ -220,13 +220,15 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * get the selected item from the JFXlistview and removes it when the button is
-	 * pressed.
+	 * removeItem get the selected item from the JFXlistview and removes it when the
+	 * button is pressed.
 	 */
-	public void removeItem() {
-		this.vieww.getItems().remove(this.vieww.getSelectionModel().getSelectedIndex());
-		if (this.vieww.getItems().size() == 0) {
-			this.remove.setDisable(true);
+	private void removeItem() {
+		if (this.vieww.getSelectionModel().getSelectedIndex() != -1) {
+			this.vieww.getItems().remove(this.vieww.getSelectionModel().getSelectedIndex());
+			if (this.vieww.getItems().size() == 0) {
+				this.remove.setDisable(true);
+			}
 		}
 	}
 
@@ -234,7 +236,7 @@ public class ImportController implements Initializable {
 	/**
 	 * quit directly exits the program.
 	 */
-	public void quit() {
+	private void quit() {
 		System.exit(0);
 	}
 
@@ -246,7 +248,7 @@ public class ImportController implements Initializable {
 	 *                            browser
 	 * @throws URISyntaxException if there has been a problem with the given URI
 	 */
-	public void about() throws IOException, URISyntaxException {
+	private void about() throws IOException, URISyntaxException {
 
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
@@ -269,7 +271,7 @@ public class ImportController implements Initializable {
 	 *                            browser
 	 * @throws URISyntaxException if there has been a problem with the given URI
 	 */
-	public void license() throws IOException, URISyntaxException {
+	private void license() throws IOException, URISyntaxException {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime().exec(new String[] { "xdg-open",
@@ -291,7 +293,7 @@ public class ImportController implements Initializable {
 	 *                            browser
 	 * @throws URISyntaxException if there has been a problem with the given URI
 	 */
-	public void josee9988() throws IOException, URISyntaxException {
+	private void josee9988() throws IOException, URISyntaxException {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime().exec(new String[] { "xdg-open", "http://github.com/Josee9988" });
@@ -311,7 +313,7 @@ public class ImportController implements Initializable {
 	 *                            browser
 	 * @throws URISyntaxException if there has been a problem with the given URI
 	 */
-	public void sourceCode() throws IOException, URISyntaxException {
+	private void sourceCode() throws IOException, URISyntaxException {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime()
@@ -329,7 +331,7 @@ public class ImportController implements Initializable {
 	 *
 	 * @return a boolean true if the operating system if unix
 	 */
-	public boolean isUnix() {
+	private boolean isUnix() {
 		return (ImportController.OS.indexOf("nix") >= 0 || ImportController.OS.indexOf("nux") >= 0
 				|| ImportController.OS.indexOf("aix") > 0);
 	}
