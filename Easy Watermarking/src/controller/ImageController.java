@@ -16,6 +16,9 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
+import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
+
 /**
  * ImageController class that resizes and joins the two images.
  *
@@ -23,56 +26,64 @@ import javax.imageio.ImageIO;
  *
  */
 public class ImageController {
-	private static ArrayList<String> paths = new ArrayList<String>();
+	private static ArrayList<String> paths;;
 	private static String OS;
+	private String waterImagePath;
+	private ObservableList<Label> originalImagePath;
 
 	// Default constructor
 	public ImageController() {
+		ImageController.paths = new ArrayList<String>();
 	}
 
 	/**
-	 * ImageController receives an String with the operating system and sets it to
-	 * the global variable OS
+	 * ImageController constructor used
 	 *
-	 * @param OS the name of the operating system
+	 * @param OS             the name of the operating system
+	 * @param items          all the labels with the text
+	 * @param waterImagePath the path of the watermark
 	 */
-	public ImageController(String OS) {
+	public ImageController(String OS, ObservableList<Label> items, String waterImagePath) {
 		ImageController.OS = OS;
+		this.originalImagePath = items;
+		this.waterImagePath = waterImagePath;
+		ImageController.paths = new ArrayList<String>();
 	}
 
+
 	/**
-	 * ImageController principal method that calls the necessary methods to resize
-	 * the image and join them in only one. It also saves and creates the folder
+	 * principal method that calls the necessary methods to resize the image and
+	 * join them in only one. It also saves and creates the folder
 	 *
 	 * @param originalImagePath receives a String with the path of the image to
 	 *                          watermark
-	 * @param waterImagePath    receives a String with the path of the image that
-	 *                          watermarks
 	 * @throws IOException if there has been an exception while performing the task
 	 *                     of the image
 	 */
-	public ImageController(String originalImagePath, String waterImagePath) throws IOException {
-		File dir = new File(this.removeFile(originalImagePath) + "Watermarked");
-		dir.mkdir();
-		BufferedImage img1 = ImageIO.read(new File(originalImagePath.toString()));
-		BufferedImage img2 = ImageIO.read(new File(waterImagePath.toString()));
+	public void imageParse() throws IOException {
+		for (Label i : this.originalImagePath) {
+			File dir = new File(this.removeFile(i.getText()) + "Watermarked");
+			dir.mkdir();
+			BufferedImage img1 = ImageIO.read(new File(i.getText()));
+			BufferedImage img2 = ImageIO.read(new File(this.waterImagePath.toString()));
 
-		BufferedImage img2Resized = this.resize(img2, img1.getWidth(), img1.getHeight());
-		BufferedImage joinedImg = this.joinBufferedImage(img1, img2Resized);
-		String path2File = "";
-		if (System.getProperty("os.name").toLowerCase().indexOf("win") > 0) {
-			path2File = dir.getAbsolutePath() + "\\" + this.getFileName(originalImagePath) + "." + "png".toString();
-		} else {
-			path2File = dir.getAbsolutePath() + "/" + this.getFileName(originalImagePath) + "." + "png".toString();
+			BufferedImage img2Resized = this.resize(img2, img1.getWidth(), img1.getHeight());
+			BufferedImage joinedImg = this.joinBufferedImage(img1, img2Resized);
+			String path2File = "";
+			if (System.getProperty("os.name").toLowerCase().indexOf("win") > 0) {
+				path2File = dir.getAbsolutePath() + "\\" + this.getFileName(i.getText()) + "." + "png".toString();
+			} else {
+				path2File = dir.getAbsolutePath() + "/" + this.getFileName(i.getText()) + "." + "png".toString();
+			}
+			ImageController.paths.add(path2File.toString());
+			ImageIO.write(joinedImg, "png", new File((path2File)));
+			img1.flush();
+			img2.flush();
+			img2Resized.flush();
+			joinedImg.flush();
 		}
-		System.out.println(path2File);
-		ImageController.paths.add(path2File);
-		ImageIO.write(joinedImg, "png", new File((path2File)));
-		img1.flush();
-		img2.flush();
-		img2Resized.flush();
-		joinedImg.flush();
 	}
+
 
 
 	/**

@@ -1,6 +1,17 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.4.1] - 2019-07-24
+
+### Changed
+
+- The whole arraylist is now controlled by imagecontroller and importcontroller doesn't need anymore to make a new imagecontroller class for each image.
+
+### Fixed
+
+- Some bugs
+- Modularity wasn't on point
+
 ## [0.4.0] - 2019-07-21
 
 ### Added
