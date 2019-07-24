@@ -151,7 +151,8 @@ public class ImportController implements Initializable {
 			jfc.setMultiSelectionEnabled(false);
 		} else {
 			jfc.setMultiSelectionEnabled(true);
-			filter = new FileNameExtensionFilter("PNG, jpeg or jpg Files", "png", "jpg", "jpeg");
+			filter = new FileNameExtensionFilter("PNG, tiff, bmp, jpeg or jpg Files", "png", "jpg", "jpeg", "bmp",
+					"tiff");
 
 		}
 		jfc.setFileFilter(filter);
@@ -190,10 +191,9 @@ public class ImportController implements Initializable {
 					this.viewWater.getItems().get(0).getText());
 			endTime = System.nanoTime() - startTime;
 
-			// this.todayDate.setText((endTime / 1000000) + " miliseconds");
 			if (imageController.CheckDifferentFolder().size() > 1) {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setHeaderText("Images created in: " + (endTime / 1000000) + " miliseconds");
+				alert.setHeaderText("Images created in: " + Math.floor((endTime / 1000000000)) + " seconds");
 				alert.setTitle("Folders with your images watermarked:");
 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 				alert.setResizable(true);
@@ -206,7 +206,7 @@ public class ImportController implements Initializable {
 				imageController.clearPaths();
 			} else if (imageController.CheckDifferentFolder().size() == 1) {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setHeaderText("Images created in: " + (endTime / 1000000) + " miliseconds");
+				alert.setHeaderText("Image created in: " + (endTime / 1000000000) + " seeconds");
 				alert.setTitle("Folder with your images watermarked:");
 				alert.setContentText(imageController.CheckDifferentFolder().get(0));
 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);

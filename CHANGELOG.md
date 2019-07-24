@@ -1,6 +1,13 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.5.1] - 2019-07-24
+
+### Added
+
+- Tiff support
+- BMP support
+
 ## [0.5.0] - 2019-07-24
 
 ### Added

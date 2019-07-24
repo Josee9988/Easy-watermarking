@@ -21,6 +21,16 @@ Check our **[changelog](CHANGELOG.md)**.
 
 <img src="https://i.imgur.com/mHvM7g0.png" alt="windows" title="windows" width="250" height="250"/> <img src="https://i.imgur.com/COpacm8.png" alt="linux" title="linux" width="250" height="250"/>
 
+---
+
+## **Image file formats fully available**
+
+- PNG
+- JPG
+- JPEG
+- TIFF
+- BMP
+
 ## *Did you enjoyed the watermarker? Help us raise these numbers up*
 
 [![Donate](https://img.shields.io/badge/Donate-Patreon-green.svg)](https://www.patreon.com/bePatron?u=22162331)
