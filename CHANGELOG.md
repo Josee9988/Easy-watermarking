@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.5.0] - 2019-07-24
+
+### Added
+
+- Threads at the creation of the image, it now will perform much better, about 75% faster (depends a lot on your cpu)
+
 ## [0.4.1] - 2019-07-24
 
 ### Changed

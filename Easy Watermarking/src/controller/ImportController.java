@@ -183,15 +183,18 @@ public class ImportController implements Initializable {
 		} else if (this.viewWater.getItems().size() == 0) {
 			this.errorLabel.setText("You must import your watermark");
 		} else {
+
+			double startTime, endTime;
+			startTime = System.nanoTime();
 			ImageController imageController = new ImageController(ImportController.OS, this.vieww.getItems(),
 					this.viewWater.getItems().get(0).getText());
+			endTime = System.nanoTime() - startTime;
 
-			imageController.imageParse();
-
+			// this.todayDate.setText((endTime / 1000000) + " miliseconds");
 			if (imageController.CheckDifferentFolder().size() > 1) {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Information Dialog");
-				alert.setHeaderText("Folders with your images watermarked:");
+				alert.setHeaderText("Images created in: " + (endTime / 1000000) + " miliseconds");
+				alert.setTitle("Folders with your images watermarked:");
 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 				alert.setResizable(true);
 				String content = "";
@@ -203,8 +206,8 @@ public class ImportController implements Initializable {
 				imageController.clearPaths();
 			} else if (imageController.CheckDifferentFolder().size() == 1) {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Information Dialog");
-				alert.setHeaderText("Folder with your images watermarked:");
+				alert.setHeaderText("Images created in: " + (endTime / 1000000) + " miliseconds");
+				alert.setTitle("Folder with your images watermarked:");
 				alert.setContentText(imageController.CheckDifferentFolder().get(0));
 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
 				alert.setResizable(true);

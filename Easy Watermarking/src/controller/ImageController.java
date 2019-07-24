@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.imageio.ImageIO;
 
@@ -25,19 +27,33 @@ import javafx.scene.control.Label;
  * @author Jose Gracia
  *
  */
-public class ImageController {
-	private static ArrayList<String> paths;;
+public class ImageController implements Runnable {
+	private static ArrayList<String> paths;
 	private static String OS;
-	private String waterImagePath;
-	private ObservableList<Label> originalImagePath;
+	private static String waterImagePath;
+	private static ObservableList<Label> originalImagePath;
+	private int turn;
+	private static ArrayList<String> pathsORpathS = new ArrayList<String>();
+	private BufferedImage img1;
+	private BufferedImage img2;
+	private BufferedImage img2Resized;
+	private BufferedImage joinedImg;
+	private static Object object = new Object();
+
 
 	// Default constructor
 	public ImageController() {
 		ImageController.paths = new ArrayList<String>();
 	}
 
+	// Default constructor
+	public ImageController(int turn) {
+		this.turn = turn;
+	}
+
 	/**
-	 * ImageController constructor used
+	 * ImageController constructor used for creating the threads and calling
+	 * imageParse which is the one that does all the work for creating the new image
 	 *
 	 * @param OS             the name of the operating system
 	 * @param items          all the labels with the text
@@ -45,15 +61,36 @@ public class ImageController {
 	 */
 	public ImageController(String OS, ObservableList<Label> items, String waterImagePath) {
 		ImageController.OS = OS;
-		this.originalImagePath = items;
-		this.waterImagePath = waterImagePath;
+		ImageController.originalImagePath = items;
+		ImageController.waterImagePath = waterImagePath;
 		ImageController.paths = new ArrayList<String>();
+		ExecutorService pool = Executors.newFixedThreadPool(items.size());
+
+		for (int i = 0; i < ImageController.originalImagePath.size(); i++) {
+			Runnable runnable = new ImageController(i);
+			pool.execute(runnable);
+		}
+
+		pool.shutdown();
+		while (!pool.isTerminated())
+			;
+
+	}
+
+	@Override
+	public void run() {
+		try {
+			this.imageParse();
+		} catch (IOException e) {
+			System.out.println(e.toString());
+		}
+
 	}
 
 
 	/**
-	 * principal method that calls the necessary methods to resize the image and
-	 * join them in only one. It also saves and creates the folder
+	 * imageParse principal method that calls the necessary methods to resize the
+	 * image and join them in only one. It also saves and creates the folder
 	 *
 	 * @param originalImagePath receives a String with the path of the image to
 	 *                          watermark
@@ -61,27 +98,32 @@ public class ImageController {
 	 *                     of the image
 	 */
 	public void imageParse() throws IOException {
-		for (Label i : this.originalImagePath) {
-			File dir = new File(this.removeFile(i.getText()) + "Watermarked");
-			dir.mkdir();
-			BufferedImage img1 = ImageIO.read(new File(i.getText()));
-			BufferedImage img2 = ImageIO.read(new File(this.waterImagePath.toString()));
-
-			BufferedImage img2Resized = this.resize(img2, img1.getWidth(), img1.getHeight());
-			BufferedImage joinedImg = this.joinBufferedImage(img1, img2Resized);
-			String path2File = "";
-			if (System.getProperty("os.name").toLowerCase().indexOf("win") > 0) {
-				path2File = dir.getAbsolutePath() + "\\" + this.getFileName(i.getText()) + "." + "png".toString();
-			} else {
-				path2File = dir.getAbsolutePath() + "/" + this.getFileName(i.getText()) + "." + "png".toString();
-			}
-			ImageController.paths.add(path2File.toString());
-			ImageIO.write(joinedImg, "png", new File((path2File)));
-			img1.flush();
-			img2.flush();
-			img2Resized.flush();
-			joinedImg.flush();
+		File dir = new File(
+				this.removeFile(ImageController.originalImagePath.get(this.turn).getText()) + "Watermarked");
+		dir.mkdir();
+		synchronized (ImageController.object) {
+			this.img1 = ImageIO.read(new File(ImageController.originalImagePath.get(this.turn).getText()));
 		}
+		this.img2 = ImageIO.read(new File(ImageController.waterImagePath));
+
+		this.img2Resized = this.resize(this.img2, this.img1.getWidth(), this.img1.getHeight());
+		this.joinedImg = this.joinBufferedImage(this.img1, this.img2Resized);
+		String path2File = "";
+		if (System.getProperty("os.name").toLowerCase().indexOf("win") > 0) {
+			path2File = dir.getAbsolutePath() + "\\"
+					+ this.getFileName(ImageController.originalImagePath.get(this.turn).getText()) + "."
+					+ "png".toString();
+		} else {
+			path2File = dir.getAbsolutePath() + "/"
+					+ this.getFileName(ImageController.originalImagePath.get(this.turn).getText()) + "."
+					+ "png".toString();
+		}
+		ImageController.paths.add(path2File.toString());
+		ImageIO.write(this.joinedImg, "png", new File((path2File)));
+		this.img1.flush();
+		this.img2.flush();
+		this.img2Resized.flush();
+		this.joinedImg.flush();
 	}
 
 
@@ -93,22 +135,21 @@ public class ImageController {
 	 * @return ArrayList<String> with the paths of the folders (without filenames)
 	 */
 	public ArrayList<String> CheckDifferentFolder() {
-		ArrayList<String> pathsORpathS = new ArrayList<String>();
-		pathsORpathS.add(this.removeFile(ImageController.paths.get(0))); // we add atleast the first
+		ImageController.pathsORpathS.add(this.removeFile(ImageController.paths.get(0))); // we add atleast the first
 		for (String i : ImageController.paths) {
 			for (String j : ImageController.paths) {
 				if (!(this.removeFile(i).equals(this.removeFile(j)))) {
-					pathsORpathS.add(this.removeFile(j));
+					ImageController.pathsORpathS.add(this.removeFile(j));
 					break;
 				}
 			}
 		}
 		// Removing duplicates
-		Set<String> set = new HashSet<>(pathsORpathS);
-		pathsORpathS.clear();
-		pathsORpathS.addAll(set);
+		Set<String> set = new HashSet<>(ImageController.pathsORpathS);
+		ImageController.pathsORpathS.clear();
+		ImageController.pathsORpathS.addAll(set);
 
-		return pathsORpathS;
+		return ImageController.pathsORpathS;
 	}
 
 	/**
@@ -189,5 +230,6 @@ public class ImageController {
 		return path.substring(pos2 + 1, pos);
 
 	}
+
 
 }
