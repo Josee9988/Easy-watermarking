@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.5.4] - 2019-07-25
+
+### Added
+
+* Improved readme
+
 ## [0.5.3] - 2019-07-25
 
 ### Added
