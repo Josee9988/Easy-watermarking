@@ -1,7 +1,6 @@
 /**
  * @author Jose_Gracia_Berenguer
  * @version Jul 21, 2019
- * @param args Receives the arguments of the program.
  */
 package controller;
 
@@ -40,13 +39,12 @@ public class ImageController implements Runnable {
 	private BufferedImage joinedImg;
 	private static Object object = new Object();
 
-
 	// Default constructor
 	public ImageController() {
 		ImageController.paths = new ArrayList<String>();
 	}
 
-	// Default constructor
+	// constructor
 	public ImageController(int turn) {
 		this.turn = turn;
 	}
@@ -64,7 +62,14 @@ public class ImageController implements Runnable {
 		ImageController.originalImagePath = items;
 		ImageController.waterImagePath = waterImagePath;
 		ImageController.paths = new ArrayList<String>();
-		ExecutorService pool = Executors.newFixedThreadPool(items.size());
+	}
+
+	/**
+	 * initialiceThreadsAndRun initializes the threads and calls the run method
+	 * which will make all the work for creating the images
+	 */
+	public void initializeThreadsAndRun() {
+		ExecutorService pool = Executors.newFixedThreadPool(ImageController.originalImagePath.size());
 
 		for (int i = 0; i < ImageController.originalImagePath.size(); i++) {
 			Runnable runnable = new ImageController(i);
@@ -74,7 +79,6 @@ public class ImageController implements Runnable {
 		pool.shutdown();
 		while (!pool.isTerminated())
 			;
-
 	}
 
 	@Override
@@ -87,13 +91,10 @@ public class ImageController implements Runnable {
 
 	}
 
-
 	/**
 	 * imageParse principal method that calls the necessary methods to resize the
 	 * image and join them in only one. It also saves and creates the folder
 	 *
-	 * @param originalImagePath receives a String with the path of the image to
-	 *                          watermark
 	 * @throws IOException if there has been an exception while performing the task
 	 *                     of the image
 	 */
@@ -125,8 +126,6 @@ public class ImageController implements Runnable {
 		this.img2Resized.flush();
 		this.joinedImg.flush();
 	}
-
-
 
 	/**
 	 * CheckDifferentFolder checks the different save paths that and return them
@@ -230,6 +229,5 @@ public class ImageController implements Runnable {
 		return path.substring(pos2 + 1, pos);
 
 	}
-
 
 }

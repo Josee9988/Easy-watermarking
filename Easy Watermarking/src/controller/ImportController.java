@@ -1,7 +1,6 @@
 /**
  * @author Jose_Gracia_Berenguer
  * @version Jul 21, 2019
- * @param args Receives the arguments of the program.
  */
 package controller;
 
@@ -77,7 +76,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * importPicsAction calls the method Choosefile and initialices the FileChooser
+	 * importPicsAction calls the method Choosefile and initializes the FileChooser
 	 * with a title and a boolean for not only selecting png's
 	 *
 	 * @throws FileNotFoundException if the images are not found in your file system
@@ -88,19 +87,18 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * importWaterAction calls the method Choosefile and initialices the FileChooser
+	 * importWaterAction calls the method Choosefile and initializes the FileChooser
 	 * with a title and a boolean for only selecting png's
 	 *
 	 * @throws FileNotFoundException if the images are not found in your file system
 	 */
 	private void importWaterAction() throws FileNotFoundException {
 		this.ChooseFile("Choose your watermarker: ", true);
-
 	}
 
 	/**
 	 * fillListWater receives a string with the path of the image and set it to the
-	 * listview with the watermark
+	 * ListView with the watermark
 	 *
 	 * @param file string with the path of the image
 	 * @throws FileNotFoundException if the images are not found in your file system
@@ -139,8 +137,13 @@ public class ImportController implements Initializable {
 	/**
 	 * ChooseFile launchs JFileChooser that will prompt the user for images
 	 *
+	 * @param dialogTitle the title that the window will display
+	 *
+	 * @param OnlyPng     if the jfilechooser will allow only png files or not
+	 *
 	 * @throws FileNotFoundException if the image was not found in your file system.
 	 */
+
 	private void ChooseFile(String dialogTitle, boolean OnlyPng) throws FileNotFoundException {
 		JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
 		jfc.setDialogTitle(dialogTitle);
@@ -151,7 +154,7 @@ public class ImportController implements Initializable {
 			jfc.setMultiSelectionEnabled(false);
 		} else {
 			jfc.setMultiSelectionEnabled(true);
-			filter = new FileNameExtensionFilter("PNG, tiff, bmp, gif, jpeg or jpg Files", "png", "jpg", "jpeg", "bmp",
+			filter = new FileNameExtensionFilter("PNG, TIFF, BMP, GIF, JPEG or JPG Files", "png", "jpg", "jpeg", "bmp",
 					"tiff", "gif");
 
 		}
@@ -184,11 +187,11 @@ public class ImportController implements Initializable {
 		} else if (this.viewWater.getItems().size() == 0) {
 			this.errorLabel.setText("You must import your watermark");
 		} else {
-
 			double startTime, endTime;
 			startTime = System.nanoTime();
 			ImageController imageController = new ImageController(ImportController.OS, this.vieww.getItems(),
 					this.viewWater.getItems().get(0).getText());
+			imageController.initializeThreadsAndRun();
 			endTime = System.nanoTime() - startTime;
 
 			if (imageController.CheckDifferentFolder().size() > 1) {
@@ -217,7 +220,6 @@ public class ImportController implements Initializable {
 		}
 	}
 
-
 	@FXML
 	/**
 	 * removeItem get the selected item from the JFXlistview and removes it when the
@@ -234,7 +236,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * quit directly exits the program.
+	 * quit directly exits the program with an exit code of 0.
 	 */
 	private void quit() {
 		System.exit(0);
@@ -253,7 +255,7 @@ public class ImportController implements Initializable {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime().exec(new String[] { "xdg-open",
-				"https://github.com/Josee9988/Easy-watermarking/blob/master/README.md" });
+						"https://github.com/Josee9988/Easy-watermarking/blob/master/README.md" });
 			}
 		} else {
 			if (Desktop.isDesktopSupported()) {
@@ -275,7 +277,7 @@ public class ImportController implements Initializable {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime().exec(new String[] { "xdg-open",
-				"https://github.com/Josee9988/Easy-watermarking/blob/master/LICENSE" });
+						"https://github.com/Josee9988/Easy-watermarking/blob/master/LICENSE" });
 			}
 		} else {
 			if (Desktop.isDesktopSupported()) {
@@ -317,7 +319,7 @@ public class ImportController implements Initializable {
 		if (this.isUnix()) {
 			if (Runtime.getRuntime().exec(new String[] { "which", "xdg-open" }).getInputStream().read() != -1) {
 				Runtime.getRuntime()
-				.exec(new String[] { "xdg-open", "https://github.com/Josee9988/Easy-watermarking" });
+						.exec(new String[] { "xdg-open", "https://github.com/Josee9988/Easy-watermarking" });
 			}
 		} else {
 			if (Desktop.isDesktopSupported()) {

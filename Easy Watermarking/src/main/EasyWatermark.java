@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 /**
  * EasyWatermark main class that initialices import.fxml
  *
- * @author Jose Gracia berenguer
+ * @author Jose Gracia Berenguer
  */
 public class EasyWatermark extends Application {
 
@@ -34,7 +34,7 @@ public class EasyWatermark extends Application {
 			primaryStage.setResizable(true);
 			Image icon = new Image(this.getClass().getResourceAsStream("/view/icons/MainIcon.png"));
 			primaryStage.getIcons().add(icon);
-			primaryStage.setTitle("Easy Watermark - Import your pictures + the watermark");
+			primaryStage.setTitle("Easy Watermark - Import your pictures and the watermark");
 			primaryStage.show();
 
 		} catch (IOException e) {
