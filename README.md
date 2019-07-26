@@ -15,6 +15,14 @@ Check our **[changelog](CHANGELOG.md)**.
 
 ---
 
+## **Download**
+
+Read the **[release notes](https://github.com/Josee9988/Easy-watermarking/releases/tag/V0.5.5)**.
+
+Directly **[download](https://github.com/Josee9988/Easy-watermarking/releases/download/V0.5.5/Easy.Watermarking.jar)** the executable.
+
+---
+
 ## **Works in Windows and in Linux with the same program**
 
 - You don't need to worry if you are using linux, it will work perfectly for you aswell as it is developed in an Unix environment, but **works exactly the same for both operating systems**.

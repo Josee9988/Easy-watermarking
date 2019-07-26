@@ -1,6 +1,15 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [RELEASED] - 2019-07-26
+
+## [0.5.5] - 2019-07-26
+
+### Added
+
+* Executable jar
+* Readme link to the release and the executable
+
 ## [0.5.4] - 2019-07-25
 
 ### Added
