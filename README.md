@@ -11,8 +11,6 @@ Check our **[changelog](CHANGELOG.md)**.
 
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/y/Josee9988/Easy-watermarking.svg?style=popout-square)](#Easy-watermarking)
 
-<img src="https://i.imgur.com/SW0GqE6.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 250px; max-width:250px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:23.5%;"/>
-
 ---
 
 ## **Download**
@@ -20,6 +18,22 @@ Check our **[changelog](CHANGELOG.md)**.
 Read the **[release notes](https://github.com/Josee9988/Easy-watermarking/releases/tag/V0.5.5)**.
 
 Directly **[download](https://github.com/Josee9988/Easy-watermarking/releases/download/V0.5.5/Easy.Watermarking.jar)** the executable.
+
+---
+
+## **How does it look?** 📷
+
+- Open the program.
+
+<img src="https://i.imgur.com/dYnkqTe.png" alt="main" title="main" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
+- Import all your images and the watermark
+
+<img src="https://i.imgur.com/QZLJJQa.png" alt="imported" title="imported" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
+
+- Click *Apply Watermark*
+
+<img src="https://i.imgur.com/FSe6iPJ.png" alt="final" title="final" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 500px; max-width:500px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:75%;"/>
 
 ---
 
@@ -59,5 +73,7 @@ Directly **[download](https://github.com/Josee9988/Easy-watermarking/releases/do
 [![Github forks](https://img.shields.io/github/forks/Josee9988/Easy-watermarking.svg?style=social)](#languages-primarily-tested)
 
 ---
+
+<img src="https://i.imgur.com/SW0GqE6.png" alt="logo" title="logo" style="border-radius:15px; box-shadow: 6px 6px  #282829; max-height: 250px; max-width:250px;margin-left: auto; margin-right:auto;display: block;margin-left: auto;margin-right:auto;width:23.5%;"/>
 
 *Made with a lot of ❤️❤️ by **[@Josee9988](https://github.com/Josee9988)***

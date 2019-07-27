@@ -1,6 +1,12 @@
 <!-- markdownlint-disable MD024-->
 # **Change Log**
 
+## [0.5.6] - 2019-07-27
+
+### Added
+
+* Documentation images in readme.md
+
 ## [RELEASED] - 2019-07-26
 
 ## [0.5.5] - 2019-07-26
