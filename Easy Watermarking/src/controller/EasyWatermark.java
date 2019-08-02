@@ -15,7 +15,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * EasyWatermark main class that initialices import.fxml
+ * EasyWatermark main class that initializes import.fxml
  *
  * @author Jose Gracia Berenguer
  */

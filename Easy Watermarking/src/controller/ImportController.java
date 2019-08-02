@@ -34,7 +34,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
 /**
- * Class that initialices the view of import.fxml and contains its containers
+ * Class that initializes the view of import.fxml and contains its containers
  * buttons etc.
  *
  * @author Jose Gracia
@@ -76,7 +76,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * importPicsAction calls the method Choosefile and initializes the FileChooser
+	 * importPicsAction calls the method ChooseFile and initializes the FileChooser
 	 * with a title and a boolean for not only selecting png's
 	 *
 	 * @throws FileNotFoundException if the images are not found in your file system
@@ -87,17 +87,17 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * importWaterAction calls the method Choosefile and initializes the FileChooser
+	 * importWaterAction calls the method ChooseFile and initializes the FileChooser
 	 * with a title and a boolean for only selecting png's
 	 *
 	 * @throws FileNotFoundException if the images are not found in your file system
 	 */
 	private void importWaterAction() throws FileNotFoundException {
-		this.ChooseFile("Choose your watermarker: ", true);
+		this.ChooseFile("Choose your watermark: ", true);
 	}
 
 	/**
-	 * fillListWater receives a string with the path of the image and set it to the
+	 * fillListWater receives a String with the path of the image and set it to the
 	 * ListView with the watermark
 	 *
 	 * @param file string with the path of the image
@@ -116,10 +116,10 @@ public class ImportController implements Initializable {
 	}
 
 	/**
-	 * fillList receives an arraylist with all the files with paths of the images
-	 * and sets it to the listview
+	 * fillList receives an ArrayList with all the files with paths of the images
+	 * and sets it to the listView
 	 *
-	 * @param list arraylist with all the files with paths of the images
+	 * @param list ArrayList with all the files with paths of the images
 	 * @throws FileNotFoundException if the images are not found in your file system
 	 */
 	private void fillList(List<File> list) throws FileNotFoundException {
@@ -135,11 +135,11 @@ public class ImportController implements Initializable {
 	}
 
 	/**
-	 * ChooseFile launchs JFileChooser that will prompt the user for images
+	 * ChooseFile launches JFileChooser that will prompt the user for images
 	 *
 	 * @param dialogTitle the title that the window will display
 	 *
-	 * @param OnlyPng     if the jfilechooser will allow only png files or not
+	 * @param OnlyPng if the jfilechooser will allow only png files or not
 	 *
 	 * @throws FileNotFoundException if the image was not found in your file system.
 	 */
@@ -209,7 +209,7 @@ public class ImportController implements Initializable {
 				imageController.clearPaths();
 			} else if (imageController.CheckDifferentFolder().size() == 1) {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setHeaderText("Image created in: " + (endTime / 1000000000) + " seeconds");
+				alert.setHeaderText("Image created in: " + (endTime / 1000000000) + " seconds");
 				alert.setTitle("Folder with your images watermarked:");
 				alert.setContentText(imageController.CheckDifferentFolder().get(0));
 				alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
@@ -244,7 +244,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * about launchs the default browser and searchs for an URI
+	 * about launches the default browser and looks for a URI
 	 *
 	 * @throws IOException        if there has been an IO exception, executing the
 	 *                            browser
@@ -267,7 +267,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * license launchs the default browser and searchs for an URI
+	 * license launches the default browser and looks for a URI
 	 *
 	 * @throws IOException        if there has been an IO exception, executing the
 	 *                            browser
@@ -289,7 +289,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * josee9988 launchs the default browser and searchs for an URI
+	 * josee9988 launches the default browser and looks for a URI
 	 *
 	 * @throws IOException        if there has been an IO exception, executing the
 	 *                            browser
@@ -309,7 +309,7 @@ public class ImportController implements Initializable {
 
 	@FXML
 	/**
-	 * sourceCode launchs the default browser and searchs for an URI
+	 * sourceCode launches the default browser and looks for a URI
 	 *
 	 * @throws IOException        if there has been an IO exception, executing the
 	 *                            browser

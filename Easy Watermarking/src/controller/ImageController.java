@@ -65,7 +65,7 @@ public class ImageController implements Runnable {
 	}
 
 	/**
-	 * initialiceThreadsAndRun initializes the threads and calls the run method
+	 * initializeThreadsAndRun initializes the threads and calls the run method
 	 * which will make all the work for creating the images
 	 */
 	public void initializeThreadsAndRun() {
@@ -129,12 +129,12 @@ public class ImageController implements Runnable {
 
 	/**
 	 * CheckDifferentFolder checks the different save paths that and return them
-	 * into an arraylist
+	 * into an ArrayList
 	 *
 	 * @return ArrayList<String> with the paths of the folders (without filenames)
 	 */
 	public ArrayList<String> CheckDifferentFolder() {
-		ImageController.pathsORpathS.add(this.removeFile(ImageController.paths.get(0))); // we add atleast the first
+		ImageController.pathsORpathS.add(this.removeFile(ImageController.paths.get(0))); // we add at least the first
 		for (String i : ImageController.paths) {
 			for (String j : ImageController.paths) {
 				if (!(this.removeFile(i).equals(this.removeFile(j)))) {
@@ -159,12 +159,12 @@ public class ImageController implements Runnable {
 	}
 
 	/**
-	 * resize resice the watermark to get the width and height of the original image
+	 * resize resize the watermark to get the width and height of the original image
 	 * to perform the watermark
 	 *
-	 * @param img    the image of the watermark
-	 * @param width  the width of the image to perform the watermark
-	 * @param height the height of the image to perform the watermark
+	 * @param img image of the watermark
+	 * @param width width of the image to perform the watermark
+	 * @param height height of the image to perform the watermark
 	 * @return BufferedImage with the image resized
 	 */
 	private BufferedImage resize(BufferedImage img, int width, int height) {

@@ -1,5 +1,15 @@
 <!-- markdownlint-disable MD024-->
-# **Change Log**
+# **Change Log** 📜📝
+
+All notable changes to the "**Easy Watermarking**" program will be documented in this file.
+
+---
+
+## [0.5.7] - 2019-07-27
+
+### Fixed
+
+* Spelling mistakes
 
 ## [0.5.6] - 2019-07-27
 
@@ -42,7 +52,7 @@
 
 ### Changed
 
-* From public to private unnecesary methods
+* From public to private unnecessary methods
 
 ## [0.5.1] - 2019-07-24
 
@@ -55,13 +65,13 @@
 
 ### Added
 
-* Threads at the creation of the image, it now will perform much better, about 75% faster (depends a lot on your cpu)
+* Threads at the creation of the image, it now will perform much better, about 75% faster (depends a lot on your CPU)
 
 ## [0.4.1] - 2019-07-24
 
 ### Changed
 
-* The whole arraylist is now controlled by imagecontroller and importcontroller doesn't need anymore to make a new imagecontroller class for each image.
+* The whole ArrayList is now controlled by imageController and importController doesn't need anymore to make a new imageController class for each image.
 
 ### Fixed
 
@@ -73,14 +83,14 @@
 ### Added
 
 * Support for Windows.
-* Images of support windows & linux added + compressed
+* Images of support windows & Linux added + compressed
 * Folder of screenshots with all the images the readme will display.
 
 ## [0.3.2] - 2019-07-21
 
 ### Added
 
-* Basic info to readme
+* Basic info to the readme.
 * Missing documentation
 * Icon of the project.
 
@@ -96,8 +106,8 @@
 
 * Improved responsiveness
 * Menubar items.
-* Menubar items link to internet pages (github)
-* Added an alert dialog (informational) that displays the folder that have been created which contains the watermarked images.
+* Menubar items link to internet pages (GitHub)
+* Added an alert dialogue (informational) that displays the folder that has been created which contains the watermarked images.
 * A remove button that lets you remove images from the left panel.
 * License
 
@@ -113,7 +123,7 @@
 
 ### Fixed
 
-* Bug that made the watermark don't fill the original picture by it's width and height and was filling by its width x width.
+* Bug that made the watermark don't fill the original picture by its width and height and was filling by its width x width.
 
 ## [0.2.0] - 2019-07-20
 
@@ -123,12 +133,12 @@
 * Some responsiveness
 * An error label that will display errors.
 * Changelog.md
-* Image controller that resizes the water image every time to every picture without loosing quality
+* Image controller that resizes the water image every time to every picture without losing quality
 * And saves the files with the same name by default in a subdirectory where the image was selected (in new versions you will be able to select the folder)
 
 ### Fixed
 
-* Importing files now has a filter that only let the user select images.
+* Importing files now have a filter that only lets the user select images.
 
 ### Changed
 
@@ -140,4 +150,4 @@
 
 * Basic UI with three buttons.
 * Two buttons with that import the images
-* The images show in the tableviews
+* The images show in the TableView
